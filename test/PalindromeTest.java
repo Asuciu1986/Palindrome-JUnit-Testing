@@ -6,12 +6,12 @@ import static org.junit.Assert.*;
 
 public class PalindromeTest {
 
-    Palindrome palindrome;
+    private String input;
 
     @Before
     public void setUp() throws Exception {
 
-        palindrome = new Palindrome();
+        input = null;
 
     }
 
@@ -23,28 +23,43 @@ public class PalindromeTest {
     @Test(expected = NullPointerException.class)
     public void nullStringTest() throws Exception {
 
-        String input = null;
-
-        palindrome.isPalindrome(input.length(), input);
+        Palindrome.isPalindrome(null);
 
     }
 
     @Test
     public void emptyStringTest() throws Exception {
 
-        String input = "";
+        input = "";
 
-        assertEquals(false, palindrome.isPalindrome(input.length(), input));
+        assertTrue(Palindrome.isPalindrome(input));
 
     }
 
     @Test
     public void punctuationTest() throws Exception {
 
-        String input = "`abba`";
+        input = "Eva, can I see bees in a cave?";
 
-        assertEquals(false, palindrome.isPalindrome(input.length(), input));
+        assertFalse(Palindrome.isPalindrome(input));
 
+    }
+
+    @Test
+    public void unicodeTest() throws Exception {
+
+        input = "\u20A9 My gym \u20A9";
+
+        assertFalse(Palindrome.isPalindrome(input));
+
+    }
+
+    @Test
+    public void validPalindromeTest() throws Exception {
+
+        input = "No lemon no melon";
+
+        assertTrue(Palindrome.isPalindrome(input));
     }
 
 }
