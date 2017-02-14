@@ -37,6 +37,15 @@ public class PalindromeTest {
     }
 
     @Test
+    public void singleCharTest() throws Exception {
+
+        input = "H";
+
+        assertTrue(Palindrome.isPalindrome(input));
+
+    }
+
+    @Test
     public void punctuationTest() throws Exception {
 
         input = "Eva, can I see bees in a cave?";
@@ -52,6 +61,14 @@ public class PalindromeTest {
 
         assertFalse(Palindrome.isPalindrome(input));
 
+    }
+
+    @Test
+    public void alphaNumericPalindromeTest() throws Exception {
+
+        input = "Air 2 an a2ria";
+
+        assertTrue(Palindrome.isPalindrome(input));
     }
 
     @Test
