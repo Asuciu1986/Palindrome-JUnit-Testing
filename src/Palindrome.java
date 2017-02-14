@@ -9,7 +9,7 @@ public class Palindrome {
 
     }
 
-    private static boolean isPalindrome(int length, String input) {
+    public static boolean isPalindrome(int length, String input) {
 
         input = input.toLowerCase();
 
