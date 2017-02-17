@@ -3,16 +3,18 @@ public class Palindrome {
 
     public static void main(String[] args) {
 
+        Palindrome palindrome = new Palindrome();
+
         String input = "Poor Dan is in a droop";
 
-        if (isPalindrome(input))
+        if (palindrome.isPalindrome(input))
             System.out.println("\"" + input + "\" is a palindrome.");
         else
             System.out.println("\"" + input + "\" is not a palindrome.");
 
     }
 
-    static boolean isPalindrome(String input) {
+    boolean isPalindrome(String input) {
 
         //Converting input to Lowercase and removing all white spaces
         input = input.toLowerCase().replaceAll("\\s+", "");

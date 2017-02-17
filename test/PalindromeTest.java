@@ -6,12 +6,14 @@ import static org.junit.Assert.*;
 
 public class PalindromeTest {
 
+    private Palindrome palindrome;
     private String input;
 
     @Before
     public void setUp() throws Exception {
 
         input = null;
+        palindrome = new Palindrome();
 
     }
 
@@ -23,7 +25,7 @@ public class PalindromeTest {
     @Test(expected = NullPointerException.class)
     public void nullStringTest() throws Exception {
 
-        Palindrome.isPalindrome(null);
+        palindrome.isPalindrome(null);
 
     }
 
@@ -32,7 +34,16 @@ public class PalindromeTest {
 
         input = "";
 
-        assertTrue(Palindrome.isPalindrome(input));
+        assertTrue(palindrome.isPalindrome(input));
+
+    }
+
+    @Test
+    public void multipleWhiteSpaceTest() throws Exception {
+
+        input = "A   Santa         at Nasa";
+
+        assertTrue(palindrome.isPalindrome(input));
 
     }
 
@@ -41,7 +52,7 @@ public class PalindromeTest {
 
         input = "H";
 
-        assertTrue(Palindrome.isPalindrome(input));
+        assertTrue(palindrome.isPalindrome(input));
 
     }
 
@@ -50,7 +61,7 @@ public class PalindromeTest {
 
         input = "Eva, can I see bees in a cave?";
 
-        assertFalse(Palindrome.isPalindrome(input));
+        assertFalse(palindrome.isPalindrome(input));
 
     }
 
@@ -59,7 +70,7 @@ public class PalindromeTest {
 
         input = "\u20A9 My gym \u20A9";
 
-        assertFalse(Palindrome.isPalindrome(input));
+        assertFalse(palindrome.isPalindrome(input));
 
     }
 
@@ -68,7 +79,7 @@ public class PalindromeTest {
 
         input = "Air 2 an a2ria";
 
-        assertTrue(Palindrome.isPalindrome(input));
+        assertTrue(palindrome.isPalindrome(input));
     }
 
     @Test
@@ -76,7 +87,14 @@ public class PalindromeTest {
 
         input = "No lemon no melon";
 
-        assertTrue(Palindrome.isPalindrome(input));
+        assertTrue(palindrome.isPalindrome(input));
     }
 
+    @Test
+    public void invalidPalindromeTest() throws Exception {
+
+        input = "I am a tester";
+
+        assertFalse(palindrome.isPalindrome(input));
+    }
 }
